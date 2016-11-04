@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Test>
 @{
     Layout = null;
 }
@@ -12,6 +12,11 @@
 </head>
 <body>
     <div> 
+        @foreach (Test user in Model)
+        {
+            <strong>USER: </strong> @user.userName
+            <strong>PASS: </strong> @user.password
+        }
     </div>
 </body>
 </html>

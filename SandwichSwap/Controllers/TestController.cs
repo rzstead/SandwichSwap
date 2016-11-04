@@ -11,7 +11,12 @@ namespace SandwichSwap.Controllers
         // GET: Test
         public ActionResult Index()
         {
-            return View();
+            List<Test> users = new List<Test>();
+            using (sandwichswapContext ssc = new sandwichswapContext())
+            {
+                users = ssc.Tests.ToList();
+            }
+                return View(users);
         }
     }
 }
