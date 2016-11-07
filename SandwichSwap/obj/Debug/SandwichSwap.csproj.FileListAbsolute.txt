@@ -100,3 +100,5 @@ D:\Class Folders\WebProjects\SandwichSwap\SandwichSwap\bin\System.Web.Mvc.xml
 D:\Class Folders\WebProjects\SandwichSwap\SandwichSwap\obj\Debug\SandwichSwap.csprojResolveAssemblyReference.cache
 D:\Class Folders\WebProjects\SandwichSwap\SandwichSwap\obj\Debug\SandwichSwap.dll
 D:\Class Folders\WebProjects\SandwichSwap\SandwichSwap\obj\Debug\SandwichSwap.pdb
+C:\Users\Ben Goff\Dropbox\Neumont Classes\Q5\Web-Based Software Projects\Sandwich Swap\SandwichSwap\SandwichSwap\bin\MySql.Data.dll
+C:\Users\Ben Goff\Dropbox\Neumont Classes\Q5\Web-Based Software Projects\Sandwich Swap\SandwichSwap\SandwichSwap\bin\MySql.Data.Entity.EF6.dll
