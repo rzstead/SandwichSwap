@@ -32,26 +32,49 @@ header{
 }
 .all{
     background-color:white;
-    padding-left:15%;
-    padding-right:15%;
+    padding-left:30%;
+    padding-right:30%;
     text-align:center;
+    font-family:Calibri;
+    font-size: 20px;
 }
 nav{
     background-color: #339f48;
     padding:25px;
     text-align: center;
-    box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+    position:sticky;
+    top:0px;
 }
 .navlink{
-    background-color:white;
+    text-decoration:none;
+    background-color:darkseagreen;
     border-radius:1px;
-    padding:15px;
-    box-shadow: 2px 2px 15px 0px rgba(0,0,0,0.75);
-    margin: auto 15px;
+    padding:5px 35px;
+    box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.75);
+    margin: auto 10px;
+}
+a{
+    font-family: Porcelina;
+    font-size:2em;
+}
+a:visited{
+    color:white;
+}
+a:link{
+    color:white;
+}
+a:hover{
+    box-shadow: 2px 2px 25px 0px rgba(0,0,0,0.75);
 }
 footer{
+    box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.75);
     color:white;
+    font-family:Porcelina;
+    font-size:28px;
     text-align:center;
-    padding:5px;
+    bottom:0px;
+    margin:0px 0px -20px 0px;
+    padding: 5px;
     background-color: #339f48;
 }
