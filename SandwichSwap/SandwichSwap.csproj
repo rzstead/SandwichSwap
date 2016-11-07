@@ -147,6 +147,7 @@
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Styles\home.css" />
+    <Content Include="Styles\login.css" />
     <Content Include="User.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>User.edmx</DependentUpon>
@@ -209,6 +210,8 @@
     <Content Include="Fonts\Porcelina.otf" />
     <Content Include="Fonts\penna.otf" />
     <None Include="Properties\PublishProfiles\SandwichSwap.pubxml" />
+    <Content Include="Views\Shared\_footer.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
