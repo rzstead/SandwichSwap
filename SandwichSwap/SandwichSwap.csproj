@@ -136,9 +136,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Images\Front\closeup.jpg" />
+    <Content Include="Images\Front\bread.jpg" />
+    <Content Include="Images\Front\eggwich.jpg" />
+    <Content Include="Images\Front\triangle.jpg" />
+    <Content Include="Images\Front\closeham.jpg" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\Front\grilled.jpg" />
+    <Content Include="Images\Front\double.jpg" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="Styles\home.css" />
     <Content Include="User.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>User.edmx</DependentUpon>
@@ -197,6 +205,9 @@
     <Content Include="User.edmx.diagram">
       <DependentUpon>User.edmx</DependentUpon>
     </Content>
+    <Content Include="Fonts\Sanlabello.ttf" />
+    <Content Include="Fonts\Porcelina.otf" />
+    <Content Include="Fonts\penna.otf" />
     <None Include="Properties\PublishProfiles\SandwichSwap.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
