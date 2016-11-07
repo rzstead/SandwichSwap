@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Class Folders\WebProjects\SandwichSwap\SandwichSwap\User.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Ben Goff\Dropbox\Neumont Classes\Q5\Web-Based Software Projects\Sandwich Swap\SandwichSwap\SandwichSwap\SandwichSwapDBModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -13,10 +13,10 @@ namespace SandwichSwap
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class sandwichswapContext : DbContext
+    public partial class Entities : DbContext
     {
-        public sandwichswapContext()
-            : base("name=sandwichswapContext")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
