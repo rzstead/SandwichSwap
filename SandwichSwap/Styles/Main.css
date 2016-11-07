@@ -1,0 +1,37 @@
+﻿body {
+    margin: 0px;
+    padding:0px;
+    min-width: 800px;
+}
+@font-face{
+    font-family: Porcelina;
+    src: url(/Fonts/Porcelina.otf)
+}
+.welcome{
+    font-family:Porcelina;
+    font-size: 10em;
+    color:black;
+    margin:auto 650px auto auto;
+    z-index: -1;
+}
+header{
+    background-image:url(/Images/eggwich.jpg);
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position:top 35% right;
+    background-attachment:fixed;
+    padding:15%;
+    z-index: -2;
+}
+.all{
+    background-color:white;
+    width:100%;
+    text-align:center;
+    padding:15px;
+}
+nav{
+    box-shadow: -2px -2px 25px 1px;
+    background-color: #339f48;
+    padding:25px;
+    text-align: center;
+}

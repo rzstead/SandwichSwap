@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Images\logo.png" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="User.Context.tt">
@@ -196,6 +197,7 @@
     <Content Include="User.edmx.diagram">
       <DependentUpon>User.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\SandwichSwap.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

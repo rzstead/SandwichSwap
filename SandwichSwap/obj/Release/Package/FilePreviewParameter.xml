@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="Default Web Site/sandwichswap" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\Class\ Folders\\WebProjects\\SandwichSwap\\SandwichSwap\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\Class\ Folders\\WebProjects\\SandwichSwap\\SandwichSwap\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="sandwichswapContex-Web.config Connection String" description="" value="metadata=res://*/User.csdl|res://*/User.ssdl|res://*/User.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=mysql.hlaingfahim.com;user id=sandwichswap;database=sandwichswap;persistsecurityinfo=True;password=sandwichswap1;allowuservariables=True&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Class\ Folders\\WebProjects\\SandwichSwap\\SandwichSwap\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='sandwichswapContex']/@connectionString" />
+  </parameter>
+  <parameter name="sandwichswapContext-Web.config Connection String" description="" value="metadata=res://*/User.csdl|res://*/User.ssdl|res://*/User.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=mysql.hlaingfahim.com;user id=sandwichswap;database=sandwichswap;persistsecurityinfo=True;password=sandwichswap1;allowuservariables=True&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Class\ Folders\\WebProjects\\SandwichSwap\\SandwichSwap\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='sandwichswapContext']/@connectionString" />
+  </parameter>
+</parameters>
