@@ -24,6 +24,7 @@ namespace SandwichSwap
         public Nullable<float> price { get; set; }
         public string imageURL { get; set; }
         public string name { get; set; }
+        public int category { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sandwich> Sandwiches { get; set; }
