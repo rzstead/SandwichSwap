@@ -212,11 +212,8 @@
       <DependentUpon>SandwichSwapDBModel.edmx</DependentUpon>
     </Content>
     <Content Include="Views\Shared\_MainLayout.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Shared\_OrderInfoPartial.cshtml" />
-=======
     <Content Include="Views\Home\CreateSandwich.cshtml" />
->>>>>>> origin/master
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
