@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Topping>
 @{
     Layout = null;
 }
@@ -11,7 +11,13 @@
     <title>CreateSandwich</title>
 </head>
 <body>
-    <div> 
+    <div>
+        @{
+            using (Html.BeginForm())
+            {
+                Html.DropDownListFor(m => Model, new SelectList(Model));
+            }
+        }
     </div>
 </body>
 </html>
