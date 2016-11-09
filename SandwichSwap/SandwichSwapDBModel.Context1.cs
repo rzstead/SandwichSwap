@@ -25,5 +25,10 @@ namespace SandwichSwap
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Card> Cards { get; set; }
+        public virtual DbSet<Sandwich> Sandwiches { get; set; }
+        public virtual DbSet<Topping> Toppings { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Bread> Breads { get; set; }
     }
 }
