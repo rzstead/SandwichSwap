@@ -1,0 +1,32 @@
+﻿@model Sandwich
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_OrderInfoPartial</title>
+</head>
+<body>
+    <div> 
+        @using (Html.BeginForm())
+        {
+            <strong>Address<br/>
+            Street:<input type="text" /><br/>
+            City:<input type="text" /><br />
+            State:<input type="text" /><br />
+            Zip:<input type="number" /></strong><br/><br/>
+            <strong>Address<br />
+            Number:<input type="text" /><br />
+            Experation:<input type="date" /><br />
+            Csv:<input type="text" /><br />
+            Name on Card:<input type="text" />
+            </strong><br /><br />
+            <input type="submit" />
+        }
+    </div>
+</body>
+</html>
