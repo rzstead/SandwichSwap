@@ -146,13 +146,11 @@
     <Content Include="Images\Front\double.jpg" />
     <Content Include="SandwichSwapDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SandwichSwapDBModel.edmx</DependentUpon>
-      <LastGenOutput>SandwichSwapDBModel.Context.cs</LastGenOutput>
+      <LastGenOutput>SandwichSwapDBModel.Context1.cs</LastGenOutput>
     </Content>
     <Content Include="SandwichSwapDBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SandwichSwapDBModel.edmx</DependentUpon>
-      <LastGenOutput>SandwichSwapDBModel.cs</LastGenOutput>
+      <LastGenOutput>SandwichSwapDBModel1.cs</LastGenOutput>
     </Content>
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
@@ -176,17 +174,22 @@
     <Compile Include="Sandwich.cs">
       <DependentUpon>SandwichSwapDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SandwichSwapDBModel.Context.cs">
+    <Compile Include="SandwichSwapDBModel.Context.cs" />
+    <Compile Include="SandwichSwapDBModel.Context1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SandwichSwapDBModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="SandwichSwapDBModel.cs">
+    <Compile Include="SandwichSwapDBModel.cs" />
+    <Compile Include="SandwichSwapDBModel.Designer.cs">
+      <DependentUpon>SandwichSwapDBModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SandwichSwapDBModel1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SandwichSwapDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SandwichSwapDBModel.Designer.cs">
+    <Compile Include="SandwichSwapDBModel1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SandwichSwapDBModel.edmx</DependentUpon>
@@ -220,7 +223,7 @@
     <Content Include="Views\Home\CreateSandwich.cshtml" />
     <EntityDeploy Include="SandwichSwapDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SandwichSwapDBModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>SandwichSwapDBModel1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="SandwichSwapDBModel.edmx.diagram">
       <DependentUpon>SandwichSwapDBModel.edmx</DependentUpon>

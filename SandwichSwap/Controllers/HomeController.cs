@@ -23,7 +23,12 @@ namespace SandwichSwap.Controllers
         }
         public ActionResult CreateSandwich()
         {
-            return View();
+            List<Topping> toppings;
+            using (sandwichswapContext con = new sandwichswapContext())
+            {
+                toppings = con.Toppings.ToList();
+            }
+            return View(toppings);
         }
         public ActionResult Menu()
         {
