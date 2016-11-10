@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="sandwichswapModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="sandwichswapModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bread">
           <Key>
             <PropertyRef Name="Id" />
@@ -21,7 +21,7 @@
           <Property Name="Type" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="ExpirationDate" Type="date" Nullable="false" />
           <Property Name="Number" Type="varchar" MaxLength="16" Nullable="false" />
-          <Property Name="CVR" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="CSV" Type="varchar" MaxLength="3" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Sandwich">
@@ -235,8 +235,7 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
             <End Role="User_Sandwich" EntitySet="User_Sandwich" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sandwichswapModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -257,10 +256,10 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
           <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ExpirationDate" Type="DateTime" Nullable="false" />
           <Property Name="Number" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CVR" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.User_ibfk_1" FromRole="Card" ToRole="User" />
           <NavigationProperty Name="Users1" Relationship="Self.User_Card" FromRole="Card" ToRole="User" />
+          <Property Name="CSV" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Sandwich">
           <Key>
@@ -333,7 +332,7 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <End Role="Sandwich" Type="Self.Sandwich" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="sandwichswapContext" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="sandwichswapEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Breads" EntityType="Self.Bread" />
           <EntitySet Name="Cards" EntityType="Self.Card" />
           <EntitySet Name="Sandwiches" EntityType="Self.Sandwich" />
@@ -365,7 +364,7 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="sandwichswapModelStoreContainer" CdmEntityContainer="sandwichswapContext">
+        <EntityContainerMapping StorageEntityContainer="sandwichswapModelStoreContainer" CdmEntityContainer="sandwichswapEntities">
           <EntitySetMapping Name="Breads">
             <EntityTypeMapping TypeName="sandwichswapModel.Bread">
               <MappingFragment StoreEntitySet="Bread">
@@ -378,11 +377,11 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
           <EntitySetMapping Name="Cards">
             <EntityTypeMapping TypeName="sandwichswapModel.Card">
               <MappingFragment StoreEntitySet="Card">
+                <ScalarProperty Name="CSV" ColumnName="CSV" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="CVR" ColumnName="CVR" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
