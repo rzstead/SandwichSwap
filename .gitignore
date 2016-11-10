@@ -48,3 +48,5 @@ Temporary Items
 *.suo
 .vs/config/applicationhost.config
 *.cache
+.vs\SandwichSwap\v14\.suo
+
