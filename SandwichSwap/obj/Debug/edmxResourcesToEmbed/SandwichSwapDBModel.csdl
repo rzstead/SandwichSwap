@@ -93,7 +93,7 @@
     <End Role="User" Type="Self.User" Multiplicity="*" />
     <End Role="Sandwich" Type="Self.Sandwich" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="sandwichswapEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="sandwichswapContext" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Breads" EntityType="Self.Bread" />
     <EntitySet Name="Cards" EntityType="Self.Card" />
     <EntitySet Name="Sandwiches" EntityType="Self.Sandwich" />
