@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ae01c654e9964d22b23f28cbcf9bba14" Name="Diagram1">
+      <Diagram DiagramId="cdda281ac39040558d159fd614001c86" Name="Diagram1">
         <EntityTypeShape EntityType="sandwichswapModel.Bread" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sandwichswapModel.Card" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="sandwichswapModel.Sandwich" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
