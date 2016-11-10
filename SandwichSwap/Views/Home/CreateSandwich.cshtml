@@ -13,7 +13,7 @@
 <body>
     @using (Html.BeginForm())
     {
-
+        Html.DropDownListFor(m => Model, new SelectList(Model));
     }
 </body>
 </html>
