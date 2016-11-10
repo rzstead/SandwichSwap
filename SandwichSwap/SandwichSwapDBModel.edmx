@@ -333,7 +333,7 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <End Role="Sandwich" Type="Self.Sandwich" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="sandwichswapContext" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="sandwichswapEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Breads" EntityType="Self.Bread" />
           <EntitySet Name="Cards" EntityType="Self.Card" />
           <EntitySet Name="Sandwiches" EntityType="Self.Sandwich" />
@@ -365,7 +365,7 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="sandwichswapModelStoreContainer" CdmEntityContainer="sandwichswapContext">
+        <EntityContainerMapping StorageEntityContainer="sandwichswapModelStoreContainer" CdmEntityContainer="sandwichswapEntities">
           <EntitySetMapping Name="Breads">
             <EntityTypeMapping TypeName="sandwichswapModel.Bread">
               <MappingFragment StoreEntitySet="Bread">
