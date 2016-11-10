@@ -11,22 +11,27 @@
     <title>_OrderInfoPartial</title>
 </head>
 <body>
-    <div> 
-        @using (Html.BeginForm())
-        {
-            <strong>Address<br/>
-            Street:<input type="text" /><br/>
-            City:<input type="text" /><br />
-            State:<input type="text" /><br />
-            Zip:<input type="number" /></strong><br/><br/>
-            <strong>Address<br />
-            Number:<input type="text" /><br />
-            Experation:<input type="date" /><br />
-            Csv:<input type="text" /><br />
-            Name on Card:<input type="text" />
-            </strong><br /><br />
+    <div>
+            <strong>Address</strong><br />
+            <strong>Street</strong><input type="text" /><br />
+            <strong>City</strong><input type="text" /><br />
+            <strong>State</strong><input type="text" /><br />
+            <strong>Zip</strong><input type="number" /><br /><br />
+            <strong>Credit Card</strong><br />
+            <strong>Card type</strong>
+            <select>
+                <option>Visa</option>
+                <option>Mastercard</option>
+                <option>American Express</option>
+                <option>Discover</option>
+                <option>Captial one</option>
+                <option>Other</option>
+            </select><br />
+            <strong>Card Number</strong><input type="number" /><br />
+            <strong>Experation Date</strong><input type="text" /><br />
+            <strong>CSV</strong><input type="number" /><br />
+            <strong>Name on Card</strong><input type="text" /><br />
             <input type="submit" />
-        }
     </div>
 </body>
 </html>
