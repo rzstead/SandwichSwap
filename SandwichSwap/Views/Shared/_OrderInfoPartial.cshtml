@@ -7,10 +7,10 @@
         @using (Html.BeginForm())
         {
             <strong>Address</strong><br />
-            <strong>Street</strong><input type="text" /><br />
-            <strong>City</strong><input type="text" /><br />
-            <strong>State</strong><input type="text" /><br />
-            <strong>Zip</strong><input type="text" /><br /><br />
+            <strong>Street</strong>@Html.TextBoxFor(m => m.address.Street)<br />
+            <strong>City</strong>@Html.TextBoxFor(m=>m.address.City) <br />
+            <strong>State</strong>@Html.TextBoxFor(m => m.address.State)<br />
+            <strong>Zip</strong>@Html.TextBoxFor(m => m.address.Zip)<br /><br />
             <strong>Credit Card</strong><br />
             <strong>Card type</strong>
             <select>
@@ -21,10 +21,10 @@
                 <option>Captial One</option>
                 <option>Other</option>
             </select><br />
-            <strong>Card Number</strong><input type="text" /><br />
-            <strong>Expiration Date</strong><input type="text" /><br />
-            <strong>CSV</strong><input type="tel" /><br />
-            <strong>Name on Card</strong><input type="text" /><br />
+            <strong>Card Number</strong>@Html.TextBoxFor(m => m.card.Number)<br />
+            <strong>Expiration Date</strong>@Html.TextBoxFor(m => m.card.ExpirationDate)<br />
+            <strong>CSV</strong>@Html.TextBoxFor(m => m.card.CSV)<br />
+            <strong>Name on Card</strong>@Html.TextBoxFor(m => m.card.Name)<br />
             <input type="submit" />
         }
     </div>

@@ -7,7 +7,7 @@ namespace SandwichSwap
 {
     public class OrderModel
     {
-        public User user { get; set; }
+        public Address address { get; set; }
         public Card card { get; set; }
         public Sandwich sandwich { get; set; }
     }
