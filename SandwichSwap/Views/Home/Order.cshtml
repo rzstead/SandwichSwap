@@ -1,4 +1,4 @@
-﻿@model Sandwich
+﻿@model OrderModel
 <!DOCTYPE html>
 
 <html>
@@ -8,10 +8,7 @@
 </head>
 <body>
     <div> 
-        @using (Html.BeginForm())
-        {
-            @Html.Partial("_OrderInfoPartial")
-        }      
+            @Html.Partial("_OrderInfoPartial")   
     </div>
 </body>
 </html>
