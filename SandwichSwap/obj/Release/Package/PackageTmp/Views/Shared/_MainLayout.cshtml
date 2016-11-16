@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/Styles/home.css" type="text/css" />
+</head>
+<body>
+    <header>
+        <div class="transp">
+            <h1 class="welcome">
+                Sandwich Swap
+            </h1>
+        </div>
+    </header>
+    <nav>
+        @Html.ActionLink("Login", "Login", "Home", null, new { @class = "navlink" })
+        @Html.ActionLink("Menu", "Menu", "Home", null, new { @class = "navlink" })
+        @Html.ActionLink("Order", "Order", "Home", null, new { @class = "navlink" })
+        @if (Model != null)
+        {
+            @Html.ActionLink("Profile", "UserProf", "Home", null, new { @class = "navlink" })
+        }
+    </nav>
+    <section class="all">
+        @RenderBody()
+    </section>
+    <footer>
+        <p class="disclaimer">Sandwich Swap is copyrighted by Group Projects United, 143 South Main, UT, 84111 </p>
+    </footer>
+</body>
+</html>
