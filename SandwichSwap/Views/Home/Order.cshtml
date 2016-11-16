@@ -1,17 +1,15 @@
-﻿@model Sandwich
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
+﻿@model OrderModel
+@section Head{
+    <link rel="stylesheet" href="~/Styles/order.css" />
     <title>Order</title>
-</head>
-<body>
-    <div> 
-        @using (Html.BeginForm())
-        {
-            @Html.Partial("_OrderInfoPartial")
-        }      
+}
+@section top{
+    <div class="transp">
+        <h1 class="welcome">
+            Order
+        </h1>
     </div>
-</body>
-</html>
+}
+    <div> 
+            @Html.Partial("_OrderInfoPartial")   
+    </div>
