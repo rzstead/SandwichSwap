@@ -1,4 +1,4 @@
-﻿@model Sandwich
+﻿@model OrderModel
 @section Head{
     <link rel="stylesheet" href="~/Styles/order.css" />
     <title>Order</title>
@@ -11,8 +11,5 @@
     </div>
 }
     <div> 
-        @using (Html.BeginForm())
-        {
-            @Html.Partial("_OrderInfoPartial")
-        }      
+            @Html.Partial("_OrderInfoPartial")   
     </div>
