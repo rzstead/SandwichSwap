@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="sandwichswapModelStoreContainer" CdmEntityContainer="sandwichswapContext">
+    <EntitySetMapping Name="Breads">
+      <EntityTypeMapping TypeName="sandwichswapModel.Bread">
+        <MappingFragment StoreEntitySet="Bread">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="imageURL" ColumnName="imageURL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cards">
+      <EntityTypeMapping TypeName="sandwichswapModel.Card">
+        <MappingFragment StoreEntitySet="Card">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="CSV" ColumnName="CSV" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sandwiches">
+      <EntityTypeMapping TypeName="sandwichswapModel.Sandwich">
+        <MappingFragment StoreEntitySet="Sandwich">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="sandwichname" ColumnName="sandwichname" />
+          <ScalarProperty Name="BreadId" ColumnName="BreadId" />
+          <ScalarProperty Name="votes" ColumnName="votes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Toppings">
+      <EntityTypeMapping TypeName="sandwichswapModel.Topping">
+        <MappingFragment StoreEntitySet="Topping">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="imageURL" ColumnName="imageURL" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="category" ColumnName="category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="sandwichswapModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="CardId" ColumnName="CardId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Sandwich_Topping" TypeName="sandwichswapModel.Sandwich_Topping" StoreEntitySet="Sandwich_Topping">
+      <EndProperty Name="Sandwich">
+        <ScalarProperty Name="Id" ColumnName="SandwichId" />
+      </EndProperty>
+      <EndProperty Name="Topping">
+        <ScalarProperty Name="Id" ColumnName="ToppingId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="User_Card" TypeName="sandwichswapModel.User_Card" StoreEntitySet="User_Card">
+      <EndProperty Name="User">
+        <ScalarProperty Name="username" ColumnName="username" />
+      </EndProperty>
+      <EndProperty Name="Card">
+        <ScalarProperty Name="Id" ColumnName="CardId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="User_Sandwich" TypeName="sandwichswapModel.User_Sandwich" StoreEntitySet="User_Sandwich">
+      <EndProperty Name="User">
+        <ScalarProperty Name="username" ColumnName="username" />
+      </EndProperty>
+      <EndProperty Name="Sandwich">
+        <ScalarProperty Name="Id" ColumnName="SandwichId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
