@@ -3,28 +3,32 @@
     Layout = null;
 }
 
-    <div>
-        @using (Html.BeginForm())
-        {
-            <strong>Address</strong><br />
-            <strong>Street</strong>@Html.TextBoxFor(m => m.address.Street)<br />
-            <strong>City</strong>@Html.TextBoxFor(m=>m.address.City) <br />
-            <strong>State</strong>@Html.TextBoxFor(m => m.address.State)<br />
-            <strong>Zip</strong>@Html.TextBoxFor(m => m.address.Zip)<br /><br />
-            <strong>Credit Card</strong><br />
-            <strong>Card type</strong>
-            <select>
-                <option>Visa</option>
-                <option>Mastercard</option>
-                <option>American Express</option>
-                <option>Discover</option>
-                <option>Captial One</option>
-                <option>Other</option>
-            </select><br />
-            <strong>Card Number</strong>@Html.TextBoxFor(m => m.card.Number)<br />
-            <strong>Expiration Date</strong>@Html.TextBoxFor(m => m.card.ExpirationDate)<br />
-            <strong>CSV</strong>@Html.TextBoxFor(m => m.card.CSV)<br />
-            <strong>Name on Card</strong>@Html.TextBoxFor(m => m.card.Name)<br />
-            <input type="submit" />
-        }
-    </div>
+<section class="orderForm">
+    @using (Html.BeginForm())
+    {
+            <div class="address">
+                <h2>Delivery Address</h2><br />
+                <strong>Street</strong>@Html.TextBoxFor(m => m.address.Street)<br />
+                <strong>City</strong>@Html.TextBoxFor(m => m.address.City) <br />
+                <strong>State</strong>@Html.TextBoxFor(m => m.address.State)<br />
+                <strong>Zip</strong>@Html.TextBoxFor(m => m.address.Zip)<br /><br />
+            </div>
+            <div class="card">
+                <h2>Credit Card</h2><br />
+                <strong>Card type</strong>
+                <select>
+                    <option>Visa</option>
+                    <option>Mastercard</option>
+                    <option>American Express</option>
+                    <option>Discover</option>
+                    <option>Captial One</option>
+                    <option>Other</option>
+                </select><br />
+                <strong>Card Number</strong>@Html.TextBoxFor(m => m.card.Number)<br />
+                <strong>Expiration Date</strong>@Html.TextBoxFor(m => m.card.ExpirationDate)<br />
+                <strong>CSV</strong>@Html.TextBoxFor(m => m.card.CSV)<br />
+                <strong>Name on Card</strong>@Html.TextBoxFor(m => m.card.Name)<br />
+                <input type="submit" />
+            </div>
+    }
+</section>
