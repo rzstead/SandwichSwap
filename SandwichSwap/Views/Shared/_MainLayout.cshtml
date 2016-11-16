@@ -8,27 +8,24 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link rel="stylesheet" href="~/Styles/home.css" type="text/css" />
+    @RenderSection("Head", false)
 </head>
 <body>
     <header>
-        <div class="transp">
-            <h1 class="welcome">
-                Sandwich Swap
-            </h1>
-        </div>
+        @RenderSection("top", false)
     </header>
     <nav>
         @Html.ActionLink("Login", "Login", "Home", null, new { @class = "navlink" })
         @Html.ActionLink("Menu", "Menu", "Home", null, new { @class = "navlink" })
         @Html.ActionLink("Order", "Order", "Home", null, new { @class = "navlink" })
+        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "navlink" })
         @if (Model != null)
         {
             @Html.ActionLink("Profile", "UserProf", "Home", null, new { @class = "navlink" })
         }
     </nav>
     <section class="all">
+
         @RenderBody()
     </section>
     <footer>

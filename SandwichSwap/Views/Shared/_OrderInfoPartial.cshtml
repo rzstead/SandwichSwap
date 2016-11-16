@@ -1,30 +1,34 @@
 ﻿@model OrderModel
 @{
     Layout = null;
+    List<SelectListItem> cardtypes = new List<SelectListItem>
+    { new SelectListItem() { Text="Visa",Value="V"},
+        new SelectListItem() {Text="Mastercard",Value="M"},
+        new SelectListItem() {Text="American Express",Value="AE"},
+        new SelectListItem() {Text="Discover",Value="D"},
+        new SelectListItem() {Text="Captial One",Value="CO" },
+        new SelectListItem() {Text="Other",Value="O" }
+};
 }
 
-    <div>
-        @using (Html.BeginForm())
-        {
-            <strong>Address</strong><br />
+<section class="orderForm">
+    @using (Html.BeginForm())
+    {
+        <div class="address">
+            <h2>Delivery Address</h2><br />
             <strong>Street</strong>@Html.TextBoxFor(m => m.address.Street)<br />
-            <strong>City</strong>@Html.TextBoxFor(m=>m.address.City) <br />
+            <strong>City</strong>@Html.TextBoxFor(m => m.address.City) <br />
             <strong>State</strong>@Html.TextBoxFor(m => m.address.State)<br />
             <strong>Zip</strong>@Html.TextBoxFor(m => m.address.Zip)<br /><br />
-            <strong>Credit Card</strong><br />
-            <strong>Card type</strong>
-            <select>
-                <option>Visa</option>
-                <option>Mastercard</option>
-                <option>American Express</option>
-                <option>Discover</option>
-                <option>Captial One</option>
-                <option>Other</option>
-            </select><br />
-            <strong>Card Number</strong>@Html.TextBoxFor(m => m.card.Number)<br />
-            <strong>Expiration Date</strong>@Html.TextBoxFor(m => m.card.ExpirationDate)<br />
-            <strong>CSV</strong>@Html.TextBoxFor(m => m.card.CSV)<br />
-            <strong>Name on Card</strong>@Html.TextBoxFor(m => m.card.Name)<br />
-            <input type="submit" />
-        }
-    </div>
+        </div>
+            <div class="card">
+                <h2>Credit Card</h2><br />
+                <strong>Card type</strong>@Html.DropDownListFor(m => m.card.Type, cardtypes)<br />
+                <strong>Card Number</strong>@Html.TextBoxFor(m => m.card.Number)<br />
+                <strong>Expiration Date</strong>@Html.TextBoxFor(m => m.card.ExpirationDate)<br />
+                <strong>CSV</strong>@Html.TextBoxFor(m => m.card.CSV)<br />
+                <strong>Name on Card</strong>@Html.TextBoxFor(m => m.card.Name)<br />
+                <input type="submit" />
+            </div>
+    }
+</section>
