@@ -177,6 +177,7 @@
     </Compile>
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\OrderModel.cs" />
+    <Compile Include="Models\Topping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sandwich.cs">
       <DependentUpon>SandwichSwapDBModel.tt</DependentUpon>
