@@ -42,8 +42,23 @@ namespace SandwichSwap.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Order(OrderModel order)
+        {
+            ActionResult result;
+            if (ModelState.IsValid)
+            {
+                result = View(order);
+            }
+            else
+            {
+                result = View();
+            }
+            return result;
 
-		public PartialViewResult AddRow(CreateSandwichViewModel model)
+        }
+
+        public PartialViewResult AddRow(CreateSandwichViewModel model)
 		{
 			numOfRows++;
 			model.Rows = numOfRows;

@@ -203,6 +203,7 @@
     <Compile Include="User.cs">
       <DependentUpon>SandwichSwapDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\CreateSandwichViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -232,6 +233,7 @@
       <DependentUpon>SandwichSwapDBModel.edmx</DependentUpon>
     </Content>
     <Content Include="Views\Shared\_MenuDisplayPartial.cshtml" />
+    <Content Include="Views\Home\Confirmation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
