@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SandwichSwap.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,9 @@ namespace SandwichSwap.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
-        public ActionResult Index()
+		private static int numOfRows = 3;
+		// GET: Home
+		public ActionResult Index()
         {
             return View();
         }
@@ -23,12 +25,14 @@ namespace SandwichSwap.Controllers
         }
         public ActionResult CreateSandwich()
         {
-            List<Topping> toppings;
-            using (sandwichswapContext con = new sandwichswapContext())
-            {
-                toppings = con.Toppings.ToList();
-            }
-            return View(toppings);
+			List<Bread> breads = new List<Bread>();
+			List<Topping> toppings = new List<Topping>();
+			using(sandwichswapContext con = new sandwichswapContext())
+			{
+				breads = con.Breads.ToList();
+				toppings = con.Toppings.ToList();
+			}
+            return View(new CreateSandwichViewModel(breads, toppings));
         }
         public ActionResult Menu()
         {
@@ -38,5 +42,12 @@ namespace SandwichSwap.Controllers
         {
             return View();
         }
+
+		public PartialViewResult AddRow(CreateSandwichViewModel model)
+		{
+			numOfRows++;
+			model.Rows = numOfRows;
+			return PartialView("_ToppingTablePartialView", model);
+		}
     }
 }
