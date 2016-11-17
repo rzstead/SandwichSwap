@@ -1,12 +1,16 @@
 ﻿@using SandwichSwap.ViewModels
-@model CreateSandwichViewModel
+@model MenuViewModel
 
-@for (int i = 0; i < Model.Rows; i++)
-{
-    <select id="toppingList">
-        @foreach (Topping t in Model.Toppings)
-        {
-            <option value=@t.Id>@t.name</option>
-        }
-    </select><br />
-}
+<section id="toppingTable">
+    @for (int i = 0; i < Model.Rows; i++)
+    {
+        <select id="toppingList">
+            @foreach (Topping t in Model.Toppings)
+            {
+                <option value=@t.Id>@t.name</option>
+            }
+        </select><br />
+    }
+    </section>
+
+    <input type="button" id="addRow" value="Add Row" />

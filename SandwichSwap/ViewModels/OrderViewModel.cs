@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SandwichSwap
 {
-    public class OrderModel
+    public class OrderViewModel
     {
         public Address address { get; set; }
         public Card card { get; set; }
