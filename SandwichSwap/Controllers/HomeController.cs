@@ -34,9 +34,6 @@ namespace SandwichSwap.Controllers
 			}
             return View(new CreateSandwichViewModel(breads, toppings));
         }
-
-
-
         public ActionResult Menu()
         {
             return View();
@@ -45,6 +42,27 @@ namespace SandwichSwap.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Order(OrderModel order)
+        {
+            ActionResult result;
+            if (ModelState.IsValid)
+            {
+                result = View(order);
+            }
+            else
+            {
+                result = View();
+            }
+            return result;
 
+        }
+
+        public PartialViewResult AddRow(CreateSandwichViewModel model)
+		{
+			numOfRows++;
+			model.Rows = numOfRows;
+			return PartialView("_ToppingTablePartialView", model);
+		}
     }
 }
