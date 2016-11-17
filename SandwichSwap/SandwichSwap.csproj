@@ -176,7 +176,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Address.cs" />
-    <Compile Include="Models\OrderModel.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="Models\Topping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sandwich.cs">
@@ -203,7 +203,7 @@
     <Compile Include="User.cs">
       <DependentUpon>SandwichSwapDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\CreateSandwichViewModel.cs" />
+    <Compile Include="ViewModels\MenuViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -223,8 +223,7 @@
     <None Include="Properties\PublishProfiles\SandwichSwap.pubxml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_MainLayout.cshtml" />
-    <Content Include="Views\Shared\_OrderInfoPartial.cshtml" />
-    <Content Include="Views\Home\CreateSandwich.cshtml" />
+    <Content Include="Views\Shared\_OrderInfoPartialView.cshtml" />
     <EntityDeploy Include="SandwichSwapDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SandwichSwapDBModel.Designer.cs</LastGenOutput>
@@ -232,8 +231,9 @@
     <Content Include="SandwichSwapDBModel.edmx.diagram">
       <DependentUpon>SandwichSwapDBModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Views\Shared\_MenuDisplayPartial.cshtml" />
+    <Content Include="Views\Shared\_MenuDisplayPartialView.cshtml" />
     <Content Include="Views\Home\Confirmation.cshtml" />
+    <Content Include="Views\Shared\_ToppingTablePartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
