@@ -5,12 +5,12 @@ using System.Web;
 
 namespace SandwichSwap.ViewModels
 {
-	public class CreateSandwichViewModel
+	public class MenuViewModel
 	{
 
 		private User _sandwichUser;
 
-		public CreateSandwichViewModel(List<Bread> breads, List<Topping> toppings)
+		public MenuViewModel(List<Bread> breads, List<Topping> toppings)
 		{
 			Breads = breads;
 			Toppings = toppings;

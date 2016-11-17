@@ -23,27 +23,38 @@ namespace SandwichSwap.Controllers
         {
             return View();
         }
-        public ActionResult CreateSandwich()
+        public ActionResult Menu()
         {
 			List<Bread> breads = new List<Bread>();
 			List<Topping> toppings = new List<Topping>();
-			using(sandwichswapContext con = new sandwichswapContext())
+			using (sandwichswapContext con = new sandwichswapContext())
 			{
 				breads = con.Breads.ToList();
 				toppings = con.Toppings.ToList();
 			}
-            return View(new CreateSandwichViewModel(breads, toppings));
-        }
-        public ActionResult Menu()
-        {
-            return View();
-        }
+			return View(new MenuViewModel(breads, toppings));
+		}
         public ActionResult Order()
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Order(OrderViewModel order)
+        {
+            ActionResult result;
+            if (ModelState.IsValid)
+            {
+                result = View(order);
+            }
+            else
+            {
+                result = View();
+            }
+            return result;
 
-		public PartialViewResult AddRow(CreateSandwichViewModel model)
+        }
+
+        public PartialViewResult AddRow(MenuViewModel model)
 		{
 			numOfRows++;
 			model.Rows = numOfRows;

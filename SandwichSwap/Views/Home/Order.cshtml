@@ -1,4 +1,5 @@
-﻿@model OrderModel
+﻿@using SandwichSwap.ViewModels
+@model OrderViewModel
 @section Head{
     <link rel="stylesheet" href="~/Styles/order.css" />
     <title>Order</title>
@@ -11,5 +12,5 @@
     </div>
 }
     <div> 
-            @Html.Partial("_OrderInfoPartial")   
+            @Html.Partial("_OrderInfoPartialView")   
     </div>
