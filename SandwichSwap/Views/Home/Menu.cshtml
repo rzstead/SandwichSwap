@@ -1,6 +1,11 @@
 ﻿@using SandwichSwap.ViewModels
 @model MenuViewModel
 
+@{ 
+    Bread sandwichBread = new Bread();
+    var sandwichToppings = new List<Topping>();
+}
+
 @section Head{
     <link rel="stylesheet" href="~/Styles/Order.css" />
     <title>Menu</title>
@@ -8,8 +13,22 @@
     <script src="~/scripts/jquery.unobtrusive-ajax.js"></script>
     <script>
         $(document).ready(function () {
+
             $("#addRow").click(function () {
                 $("#dropDown").clone().appendTo("#toppingTable");
+            });
+
+            $("#saveSandwich").click(function () {
+                $.ajax({
+                    url: '/Home/SaveSandwich',
+                    data: {breadId: 1},
+                    success: function () {
+                        alert("Your sandwich has been saved!")
+                    },
+                    error: function() {
+                        alert("Something went wrong.")
+                    }
+                });
             });
         });
     </script>
@@ -35,7 +54,7 @@
 
 @using (Html.BeginForm("Order", "Home"))
 {
-    <select>
+    <select id="breadDropDown">
         @foreach (Bread t in Model.Breads)
         {
             @:Bread Type:

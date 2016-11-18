@@ -231,9 +231,9 @@
     <Content Include="SandwichSwapDBModel.edmx.diagram">
       <DependentUpon>SandwichSwapDBModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Views\Shared\_MenuDisplayPartialView.cshtml" />
     <Content Include="Views\Home\Confirmation.cshtml" />
     <Content Include="Views\Shared\_ToppingTablePartialView.cshtml" />
+    <Content Include="Views\Shared\_MenuDisplayPartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
