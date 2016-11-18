@@ -19,11 +19,22 @@ namespace SandwichSwap.Controllers
         {
             return View();
         }
+		
         public ActionResult Register()
         {
             return View();
         }
-        public ActionResult UserProf()
+		[HttpPost]
+		public ActionResult Register(User user)
+		{
+			using (sandwichswapContext con = new sandwichswapContext())
+			{
+				con.Users.Add(user);
+				con.SaveChanges();
+			}
+			return View("Index");
+		}
+		public ActionResult UserProf()
         {
             return View();
         }

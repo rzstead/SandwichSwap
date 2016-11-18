@@ -1,14 +1,25 @@
-﻿
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-</head>
-<body>
-    <div> 
+﻿@using SandwichSwap.ViewModels
+@model LoginViewModel
+@section Head{
+    <link rel="stylesheet" href="~/Styles/order.css" />
+    <title>Log In</title>
+}
+@section top{
+    <div class="transp">
+        <h1 class="welcome">
+            Log In
+        </h1>
     </div>
-</body>
-</html>
+}
+<section class="Login">
+    <p>Please log in or register to enjoy the full experience of Sandwich Swap!</p>
+    @Html.ActionLink("Register", "Register", "Home", null, new { @class = "navlink" })
+    @using (Html.BeginForm())
+    {
+        <strong>Username:</strong>@Html.TextBoxFor(m => m.Username)<br />
+        <strong>Password:</strong>@Html.TextBoxFor(m => m.Password)<br />
+        <input type="submit" value="Login"/>
+    }
+
+
+</section>

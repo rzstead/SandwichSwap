@@ -1,14 +1,71 @@
-﻿
+﻿@using SandwichSwap.ViewModels
+@model MenuViewModel
 
-<!DOCTYPE html>
+@{ 
+    Bread sandwichBread = new Bread();
+    var sandwichToppings = new List<Topping>();
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
+@section Head{
+    <link rel="stylesheet" href="~/Styles/Order.css" />
     <title>Menu</title>
-</head>
-<body>
-    <div> 
+    <script src="~/scripts/jquery-1.8.0.js"></script>
+    <script src="~/scripts/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#addRow").click(function () {
+                $("#dropDown").clone().appendTo("#toppingTable");
+            });
+
+            $("#saveSandwich").click(function () {
+                $.ajax({
+                    url: '/Home/SaveSandwich',
+                    data: {breadId: 1},
+                    success: function () {
+                        alert("Your sandwich has been saved!")
+                    },
+                    error: function() {
+                        alert("Something went wrong.")
+                    }
+                });
+            });
+        });
+    </script>
+}
+@section top{
+    <div class="transp">
+        <h1 class="welcome">
+            Menu
+        </h1>
     </div>
-</body>
-</html>
+}
+
+<div id="hiddenForm" style="visibility: hidden">
+    <div id="dropDown">
+        <select>
+            @foreach (Topping t in Model.Toppings)
+            {
+                <option>@t.name</option>}
+        </select>
+
+    </div>
+</div>
+
+@using (Html.BeginForm("Order", "Home"))
+{
+    <select id="breadDropDown">
+        @foreach (Bread t in Model.Breads)
+        {
+            @:Bread Type:
+            <option value="@t.Id">@t.name</option>
+        }
+    </select>
+
+    @Html.Partial("_ToppingTablePartialView", Model)
+
+    <input type="button" id="saveSandwich" value="Save Sandwich (Not Finished)" />
+
+    <input type="submit" id="orderSubmit" value="Order Sandwich" />
+
+}
