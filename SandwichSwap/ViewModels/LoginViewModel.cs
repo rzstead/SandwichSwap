@@ -7,6 +7,7 @@ namespace SandwichSwap.ViewModels
 {
     public class LoginViewModel
     {
+        public User user { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
     }
