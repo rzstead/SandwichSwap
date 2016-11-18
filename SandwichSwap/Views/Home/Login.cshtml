@@ -1,4 +1,5 @@
-﻿@model 
+﻿@using SandwichSwap.ViewModels
+@model LoginViewModel
 @section Head{
     <link rel="stylesheet" href="~/Styles/order.css" />
     <title>Log In</title>
@@ -15,7 +16,9 @@
     @Html.ActionLink("Register", "Register", "Home", null, new { @class = "navlink" })
     @using (Html.BeginForm())
     {
-        
+        <strong>Username:</strong>@Html.TextBoxFor(m => m.Username)<br />
+        <strong>Password:</strong>@Html.TextBoxFor(m => m.Password)<br />
+        <input type="submit" value="Login"/>
     }
 
 

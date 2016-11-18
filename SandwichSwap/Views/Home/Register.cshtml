@@ -1,4 +1,5 @@
-﻿@model string
+﻿@using SandwichSwap.ViewModels
+@model LoginViewModel
 @section Head{
     <link rel="stylesheet" href="~/Styles/order.css" />
     <title>Register</title>
@@ -11,4 +12,11 @@
     </div>
 }
 
-<p>This is the register view</p>
+<p>Please Enter a Username and Password to start enjoying the Sandwich Swap Comunity!</p>
+@Html.ActionLink("Login", "Login", "Home", null, new { @class = "navlink" })
+@using (Html.BeginForm())
+{
+    <strong>Username:</strong>@Html.TextBoxFor(m => m.Username)<br/>
+    <strong>Password:</strong>@Html.TextBoxFor(m => m.Password)<br/>
+    <input type="submit" value="Create Account" />
+}
