@@ -19,6 +19,10 @@ namespace SandwichSwap.Controllers
         {
             return View();
         }
+        public ActionResult Register()
+        {
+            return View();
+        }
         public ActionResult UserProf()
         {
             return View();
