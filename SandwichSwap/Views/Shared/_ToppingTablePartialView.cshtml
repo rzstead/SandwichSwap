@@ -4,7 +4,7 @@
 <section id="toppingTable">
     @for (int i = 0; i < Model.Rows; i++)
     {
-        <select id="toppingList">
+        <select class="toppingList">
             @foreach (Topping t in Model.Toppings)
             {
                 <option value=@t.Id>@t.name</option>
@@ -13,4 +13,4 @@
     }
     </section>
 
-    <input type="button" id="addRow" value="Add Row" />
+<input type="button" id="addRow" value="Add Row" />
