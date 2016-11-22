@@ -23,9 +23,7 @@ namespace SandwichSwap
     
         public string username { get; set; }
         public string password { get; set; }
-        public int CardId { get; set; }
     
-        public virtual Card Card { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Card> Cards { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
