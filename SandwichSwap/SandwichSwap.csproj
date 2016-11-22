@@ -136,11 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Images\Front\cucumber.png" />
     <Content Include="Images\Front\closeup.jpg" />
     <Content Include="Images\Front\bread.jpg" />
     <Content Include="Images\Front\eggwich.jpg" />
-    <Content Include="Images\Front\tomato.jpg" />
     <Content Include="Images\Front\triangle.jpg" />
     <Content Include="Images\Front\closeham.jpg" />
     <Content Include="Images\logo.png" />
