@@ -13,15 +13,33 @@
     <script src="~/scripts/jquery.unobtrusive-ajax.js"></script>
     <script>
         $(document).ready(function () {
-
+            var numOfRows = 3;
             $("#addRow").click(function () {
-                $("#dropDown").clone().appendTo("#toppingTable");
+                
+                if (numOfRows <= @Model.Toppings.Count + 5)
+                {
+                    $("#dropDown").clone().appendTo("#toppingTable");
+                    numOfRows++;
+                }
+                else
+                {
+                    alert("You have too many toppings!")
+                }
+                
             });
 
             $("#saveSandwich").click(function () {
+                var toppings = [];
+                $(".toppingList").each(function () {
+                    var toppingId = $(this).val();
+                    toppings.push(toppingId);
+                });
+                alert(toppings[0] + " " + toppings[1] + " " + toppings[2])
+                var myData = { breadId: $("#breadDropDown").val(), toppingIds: $(toppings).serialize()};
+
                 $.ajax({
                     url: '/Home/SaveSandwich',
-                    data: {breadId: 1},
+                    data: myData,
                     success: function () {
                         alert("Your sandwich has been saved!")
                     },
@@ -43,10 +61,10 @@
 
 <div id="hiddenForm" style="visibility: hidden">
     <div id="dropDown">
-        <select>
+        <select class="toppingList">
             @foreach (Topping t in Model.Toppings)
             {
-                <option>@t.name</option>}
+                <option value=@t.Id>@t.name</option>}
         </select>
 
     </div>
