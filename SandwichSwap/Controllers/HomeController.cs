@@ -19,11 +19,22 @@ namespace SandwichSwap.Controllers
         {
             return View();
         }
+		
         public ActionResult Register()
         {
             return View();
         }
-        public ActionResult UserProf()
+		[HttpPost]
+		public ActionResult Register(User user)
+		{
+			using (sandwichswapContext con = new sandwichswapContext())
+			{
+				con.Users.Add(user);
+				con.SaveChanges();
+			}
+			return View("Index");
+		}
+		public ActionResult UserProf()
         {
             return View();
         }
@@ -63,6 +74,22 @@ namespace SandwichSwap.Controllers
 			numOfRows++;
 			model.Rows = numOfRows;
 			return PartialView("_ToppingTablePartialView", model);
+		}
+
+		public void SaveSandwich(int breadId/*, List<int> toppingIds, string userName, string sandwichName*/)
+		{
+			
+			using (sandwichswapContext con = new sandwichswapContext())
+			{
+				Sandwich s = new Sandwich();
+				s.BreadId = breadId;
+				/*
+				s.Bread = con.Breads.Where(b => b.Id == breadId).Single();
+				s.Toppings = con.Toppings.Where(t => toppingIds.Contains(t.Id)).ToList();
+				*/
+				con.Sandwiches.Add(s);
+				con.SaveChanges();
+			}
 		}
     }
 }

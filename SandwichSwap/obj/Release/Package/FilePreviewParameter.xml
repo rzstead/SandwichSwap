@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="PRO150/sandwichswap" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Ben\ Goff\\Dropbox\\Neumont\ Classes\\Q5\\Web-Based\ Software\ Projects\\Sandwich\ Swap\\SandwichSwap\\SandwichSwap\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Ben\ Goff\\Dropbox\\Neumont\ Classes\\Q5\\Web-Based\ Software\ Projects\\Sandwich\ Swap\\SandwichSwap\\SandwichSwap\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="sandwichswapContext-Web.config Connection String" description="" value="metadata=res://*/SandwichSwapDBModel.csdl|res://*/SandwichSwapDBModel.ssdl|res://*/SandwichSwapDBModel.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=mysql.hlaingfahim.com;user id=sandwichswap;password=sandwichswap1;persistsecurityinfo=True;database=sandwichswap&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ben\ Goff\\Dropbox\\Neumont\ Classes\\Q5\\Web-Based\ Software\ Projects\\Sandwich\ Swap\\SandwichSwap\\SandwichSwap\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='sandwichswapContext']/@connectionString" />
+  </parameter>
+</parameters>

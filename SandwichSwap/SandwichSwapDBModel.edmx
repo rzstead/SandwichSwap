@@ -60,7 +60,6 @@ warning 6002: The table/view 'def.sandwichswap.Sandwich_Topping' does not have a
           </Key>
           <Property Name="username" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="1000" Nullable="false" />
-          <Property Name="CardId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'def.sandwichswap.User_Card' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -142,18 +141,6 @@ warning 6002: The table/view 'def.sandwichswap.User_Sandwich' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="User_ibfk_1">
-          <End Role="Card" Type="Self.Card" Multiplicity="1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Card">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="CardId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="User_Sandwich_ibfk_1">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="User_Sandwich" Type="Self.User_Sandwich" Multiplicity="*" />
@@ -222,10 +209,6 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
             <End Role="Card" EntitySet="Card" />
             <End Role="User_Card" EntitySet="User_Card" />
           </AssociationSet>
-          <AssociationSet Name="User_ibfk_1" Association="Self.User_ibfk_1">
-            <End Role="Card" EntitySet="Card" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
           <AssociationSet Name="User_Sandwich_ibfk_1" Association="Self.User_Sandwich_ibfk_1">
             <End Role="User" EntitySet="User" />
             <End Role="User_Sandwich" EntitySet="User_Sandwich" />
@@ -259,8 +242,7 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
           <Property Name="Number" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CSV" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.User_ibfk_1" FromRole="Card" ToRole="User" />
-          <NavigationProperty Name="Users1" Relationship="Self.User_Card" FromRole="Card" ToRole="User" />
+          <NavigationProperty Name="Users" Relationship="Self.User_Card" FromRole="Card" ToRole="User" />
         </EntityType>
         <EntityType Name="Sandwich">
           <Key>
@@ -292,8 +274,6 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
           </Key>
           <Property Name="username" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CardId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Card" Relationship="Self.User_ibfk_1" FromRole="User" ToRole="Card" />
           <NavigationProperty Name="Cards" Relationship="Self.User_Card" FromRole="User" ToRole="Card" />
           <NavigationProperty Name="Sandwiches" Relationship="Self.User_Sandwich" FromRole="User" ToRole="Sandwich" />
         </EntityType>
@@ -306,18 +286,6 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
             </Principal>
             <Dependent Role="Sandwich">
               <PropertyRef Name="BreadId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="User_ibfk_1">
-          <End Role="Card" Type="Self.Card" Multiplicity="1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Card">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="CardId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -342,10 +310,6 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
           <AssociationSet Name="Sandwich_ibfk_1" Association="Self.Sandwich_ibfk_1">
             <End Role="Bread" EntitySet="Breads" />
             <End Role="Sandwich" EntitySet="Sandwiches" />
-          </AssociationSet>
-          <AssociationSet Name="User_ibfk_1" Association="Self.User_ibfk_1">
-            <End Role="Card" EntitySet="Cards" />
-            <End Role="User" EntitySet="Users" />
           </AssociationSet>
           <AssociationSet Name="Sandwich_Topping" Association="Self.Sandwich_Topping">
             <End Role="Sandwich" EntitySet="Sandwiches" />
@@ -414,7 +378,6 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="CardId" ColumnName="CardId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
