@@ -198,6 +198,7 @@
     <Compile Include="User.cs">
       <DependentUpon>SandwichSwapDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\IndexViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="Models\Topping.cs" />
