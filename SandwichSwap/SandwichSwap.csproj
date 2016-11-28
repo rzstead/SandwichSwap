@@ -204,6 +204,7 @@
     <Compile Include="Models\Topping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
+    <Compile Include="Views\Home\UserProfViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
