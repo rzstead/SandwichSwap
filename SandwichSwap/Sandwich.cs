@@ -18,7 +18,6 @@ namespace SandwichSwap
         public Sandwich()
         {
             this.Toppings = new HashSet<Topping>();
-            this.Users = new HashSet<User>();
         }
     
         public int Id { get; set; }
@@ -28,9 +27,8 @@ namespace SandwichSwap
         public int votes { get; set; }
     
         public virtual Bread Bread { get; set; }
+        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Topping> Toppings { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
     }
 }

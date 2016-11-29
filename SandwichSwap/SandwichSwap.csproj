@@ -144,15 +144,15 @@
     <Content Include="Images\logo.png" />
     <Content Include="Images\Front\grilled.jpg" />
     <Content Include="Images\Front\double.jpg" />
-    <Content Include="SandwichSwapDBModel.Context.tt">
+    <Content Include="sandwichswapDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SandwichSwapDBModel.edmx</DependentUpon>
-      <LastGenOutput>SandwichSwapDBModel.Context.cs</LastGenOutput>
+      <DependentUpon>sandwichswapDBModel.edmx</DependentUpon>
+      <LastGenOutput>sandwichswapDBModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="SandwichSwapDBModel.tt">
+    <Content Include="sandwichswapDBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SandwichSwapDBModel.edmx</DependentUpon>
-      <LastGenOutput>SandwichSwapDBModel.cs</LastGenOutput>
+      <DependentUpon>sandwichswapDBModel.edmx</DependentUpon>
+      <LastGenOutput>sandwichswapDBModel.cs</LastGenOutput>
     </Content>
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
@@ -164,10 +164,10 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Bread.cs">
-      <DependentUpon>SandwichSwapDBModel.tt</DependentUpon>
+      <DependentUpon>sandwichswapDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Card.cs">
-      <DependentUpon>SandwichSwapDBModel.tt</DependentUpon>
+      <DependentUpon>sandwichswapDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -175,28 +175,28 @@
     </Compile>
     <Compile Include="Models\Address.cs" />
     <Compile Include="Sandwich.cs">
-      <DependentUpon>SandwichSwapDBModel.tt</DependentUpon>
+      <DependentUpon>sandwichswapDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SandwichSwapDBModel.Context.cs">
+    <Compile Include="sandwichswapDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SandwichSwapDBModel.Context.tt</DependentUpon>
+      <DependentUpon>sandwichswapDBModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="SandwichSwapDBModel.cs">
+    <Compile Include="sandwichswapDBModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SandwichSwapDBModel.tt</DependentUpon>
+      <DependentUpon>sandwichswapDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SandwichSwapDBModel.Designer.cs">
+    <Compile Include="sandwichswapDBModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SandwichSwapDBModel.edmx</DependentUpon>
+      <DependentUpon>sandwichswapDBModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Topping.cs">
-      <DependentUpon>SandwichSwapDBModel.tt</DependentUpon>
+      <DependentUpon>sandwichswapDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>SandwichSwapDBModel.tt</DependentUpon>
+      <DependentUpon>sandwichswapDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\IndexViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -229,12 +229,12 @@
     <Content Include="Views\Home\Confirmation.cshtml" />
     <Content Include="Views\Shared\_ToppingTablePartialView.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
-    <EntityDeploy Include="SandwichSwapDBModel.edmx">
+    <EntityDeploy Include="sandwichswapDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SandwichSwapDBModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>sandwichswapDBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="SandwichSwapDBModel.edmx.diagram">
-      <DependentUpon>SandwichSwapDBModel.edmx</DependentUpon>
+    <Content Include="sandwichswapDBModel.edmx.diagram">
+      <DependentUpon>sandwichswapDBModel.edmx</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
