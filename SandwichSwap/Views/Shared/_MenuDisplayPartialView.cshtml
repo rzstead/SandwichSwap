@@ -2,16 +2,16 @@
 @{
     Layout = null;
 }
-    <div id="MenuName"> 
-        @Model.sandwichname
-    </div>
-    <div id="MenuUser">
-       <strong>Created by:</strong> @Model.username
-    </div>
-    <div id="MenuDescript">
-        <strong>Toppings:</strong>
-        @foreach(Topping t in Model.Toppings)
-        {
-            t.ToString();<br/>
-        }
-    </div>
+<div id="MenuName">
+    @Model.sandwichname
+</div>
+<div id="MenuUser">
+    <strong>Created by:</strong> @Model.username
+</div>
+<div id="MenuDescript">
+    <strong>Toppings:</strong>
+    @foreach (Topping t in Model.Toppings)
+    {
+        @t.ToString()<br />
+    }
+</div>
