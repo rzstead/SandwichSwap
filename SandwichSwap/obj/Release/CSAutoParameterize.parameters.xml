@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="sandwichswapContext-Web.config Connection String" description="sandwichswapContext Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/SandwichSwapDBModel.csdl|res://*/SandwichSwapDBModel.ssdl|res://*/SandwichSwapDBModel.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=mysql.hlaingfahim.com;user id=sandwichswap;password=sandwichswap1;persistsecurityinfo=True;database=sandwichswap&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ben\ Goff\\Dropbox\\Neumont\ Classes\\Q5\\Web-Based\ Software\ Projects\\Sandwich\ Swap\\SandwichSwap\\SandwichSwap\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='sandwichswapContext']/@connectionString" />
-  </parameter>
-</parameters>

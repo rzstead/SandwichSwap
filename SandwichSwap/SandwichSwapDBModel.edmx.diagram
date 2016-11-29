@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="32a3835198ea4144903c142221dfaf92" Name="Diagram1">
+      <Diagram DiagramId="b614bb0e2aeb41c787f036ec7d922c33" Name="Diagram1">
         <EntityTypeShape EntityType="sandwichswapModel.Bread" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="sandwichswapModel.Card" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="sandwichswapModel.Sandwich" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="sandwichswapModel.Topping" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="sandwichswapModel.User" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="sandwichswapModel.Sandwich_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="sandwichswapModel.fk_Username" ManuallyRouted="false" />
         <AssociationConnector Association="sandwichswapModel.Sandwich_Topping" ManuallyRouted="false" />
         <AssociationConnector Association="sandwichswapModel.User_Card" ManuallyRouted="false" />
-        <AssociationConnector Association="sandwichswapModel.User_Sandwich" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

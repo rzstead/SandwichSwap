@@ -34,12 +34,15 @@
                     var toppingId = $(this).val();
                     toppings.push(toppingId);
                 });
-                alert(toppings[0] + " " + toppings[1] + " " + toppings[2])
-                var myData = { breadId: $("#breadDropDown").val(), toppingIds: $(toppings).serialize()};
+                
+                
+                var myData = { breadId: $("#breadDropDown").val(), toppingIds: toppings };
+                
 
                 $.ajax({
                     url: '/Home/SaveSandwich',
                     data: myData,
+                    traditional: true,
                     success: function () {
                         alert("Your sandwich has been saved!")
                     },
