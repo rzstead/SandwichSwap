@@ -82,17 +82,28 @@ namespace SandwichSwap.Controllers
 			using (sandwichswapContext con = new sandwichswapContext())
 			{
 				Sandwich s = new Sandwich();
-				s.Id = 1;
-				s.BreadId = breadId;
+				//s.Id = 1;
+				//s.BreadId = breadId;
 				s.Bread = con.Breads.Where(x => x.Id == breadId).Single();
-				s.Toppings = con.Toppings.Where(x => toppingIds.Contains(x.Id)).ToList();
+				//s.Toppings = con.Toppings.Where(x => toppingIds.Contains(x.Id)).ToList();
+                foreach(int topid in toppingIds)
+                {
+                    //Topping topping = con.Toppings.Where(x => x.Id == topid).Single();
+                    Sandwich_Topping newtopping = new Sandwich_Topping();
+                    newtopping.Sandwich = s;
+                    newtopping.ToppingId = topid;
+                    s.Sandwich_Topping.Add(newtopping);
+                }
+
 				s.User = con.Users.Where(x => x.username.Equals("rstead")).Single();
-				s.username = "rstead";
+				//s.username = "rstead";
 				s.sandwichname = "DEFAULT NAME";
 				s.votes = 0;
 				con.Sandwiches.Add(s);
 				con.SaveChanges();
-			}
+                
+                
+            }
 		}
     }
 }
