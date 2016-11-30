@@ -18,10 +18,6 @@
         @Html.ActionLink("Login", "Login", "Home", null, new { @class = "navlink" })
         @Html.ActionLink("Menu", "Menu", "Home", null, new { @class = "navlink" })
         @Html.ActionLink("Home", "Index", "Home", null, new { @class = "navlink" })
-        @if (Model != null)
-        {
-            @Html.ActionLink("Profile", "UserProf", "Home", null, new { @class = "navlink" })
-        }
     </nav>
     <section class="all">
         @RenderBody()

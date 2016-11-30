@@ -88,3 +88,6 @@
     <input type="submit" id="orderSubmit" value="Order Sandwich" />
 
 }
+@foreach(Sandwich s in Model.sandwiches){
+    @Html.Partial("_MenuDisplayPartialView", s)
+}
