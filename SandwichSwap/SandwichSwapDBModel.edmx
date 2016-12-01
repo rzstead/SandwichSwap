@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="sandwichswapModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="sandwichswapModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bread">
           <Key>
             <PropertyRef Name="Id" />
@@ -71,16 +71,18 @@ warning 6002: The table/view 'def.sandwichswap.User_Card' does not have a primar
           <Property Name="username" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="CardId" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'def.sandwichswap.User_Sandwich' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="User_Sandwich">
-          <Key>
-            <PropertyRef Name="username" />
-            <PropertyRef Name="SandwichId" />
-          </Key>
-          <Property Name="username" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="SandwichId" Type="int" Nullable="false" />
-        </EntityType>
+        <Association Name="fk_Username">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Sandwich" Type="Self.Sandwich" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="Sandwich">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Sandwich_ibfk_1">
           <End Role="Bread" Type="Self.Bread" Multiplicity="1" />
           <End Role="Sandwich" Type="Self.Sandwich" Multiplicity="*" />
@@ -141,30 +143,6 @@ warning 6002: The table/view 'def.sandwichswap.User_Sandwich' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="User_Sandwich_ibfk_1">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="User_Sandwich" Type="Self.User_Sandwich" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="username" />
-            </Principal>
-            <Dependent Role="User_Sandwich">
-              <PropertyRef Name="username" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="User_Sandwich_ibfk_2">
-          <End Role="Sandwich" Type="Self.Sandwich" Multiplicity="1" />
-          <End Role="User_Sandwich" Type="Self.User_Sandwich" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sandwich">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="User_Sandwich">
-              <PropertyRef Name="SandwichId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="sandwichswapModelStoreContainer">
           <EntitySet Name="Bread" EntityType="Self.Bread" Schema="sandwichswap" store:Type="Tables" />
           <EntitySet Name="Card" EntityType="Self.Card" Schema="sandwichswap" store:Type="Tables" />
@@ -183,12 +161,10 @@ FROM `Sandwich_Topping` AS `Sandwich_Topping`</DefiningQuery>
 `User_Card`.`CardId`
 FROM `User_Card` AS `User_Card`</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="User_Sandwich" EntityType="Self.User_Sandwich" store:Type="Tables" store:Schema="sandwichswap">
-            <DefiningQuery>SELECT
-`User_Sandwich`.`username`, 
-`User_Sandwich`.`SandwichId`
-FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
-          </EntitySet>
+          <AssociationSet Name="fk_Username" Association="Self.fk_Username">
+            <End Role="User" EntitySet="User" />
+            <End Role="Sandwich" EntitySet="Sandwich" />
+          </AssociationSet>
           <AssociationSet Name="Sandwich_ibfk_1" Association="Self.Sandwich_ibfk_1">
             <End Role="Bread" EntitySet="Bread" />
             <End Role="Sandwich" EntitySet="Sandwich" />
@@ -209,17 +185,8 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
             <End Role="Card" EntitySet="Card" />
             <End Role="User_Card" EntitySet="User_Card" />
           </AssociationSet>
-          <AssociationSet Name="User_Sandwich_ibfk_1" Association="Self.User_Sandwich_ibfk_1">
-            <End Role="User" EntitySet="User" />
-            <End Role="User_Sandwich" EntitySet="User_Sandwich" />
-          </AssociationSet>
-          <AssociationSet Name="User_Sandwich_ibfk_2" Association="Self.User_Sandwich_ibfk_2">
-            <End Role="Sandwich" EntitySet="Sandwich" />
-            <End Role="User_Sandwich" EntitySet="User_Sandwich" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sandwichswapModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -254,8 +221,8 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
           <Property Name="BreadId" Type="Int32" Nullable="false" />
           <Property Name="votes" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Bread" Relationship="Self.Sandwich_ibfk_1" FromRole="Sandwich" ToRole="Bread" />
+          <NavigationProperty Name="User" Relationship="Self.fk_Username" FromRole="Sandwich" ToRole="User" />
           <NavigationProperty Name="Toppings" Relationship="Self.Sandwich_Topping" FromRole="Sandwich" ToRole="Topping" />
-          <NavigationProperty Name="Users" Relationship="Self.User_Sandwich" FromRole="Sandwich" ToRole="User" />
         </EntityType>
         <EntityType Name="Topping">
           <Key>
@@ -274,8 +241,8 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
           </Key>
           <Property Name="username" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Sandwiches" Relationship="Self.fk_Username" FromRole="User" ToRole="Sandwich" />
           <NavigationProperty Name="Cards" Relationship="Self.User_Card" FromRole="User" ToRole="Card" />
-          <NavigationProperty Name="Sandwiches" Relationship="Self.User_Sandwich" FromRole="User" ToRole="Sandwich" />
         </EntityType>
         <Association Name="Sandwich_ibfk_1">
           <End Role="Bread" Type="Self.Bread" Multiplicity="1" />
@@ -289,6 +256,18 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_Username">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Sandwich" Type="Self.Sandwich" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="Sandwich">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Sandwich_Topping">
           <End Role="Sandwich" Type="Self.Sandwich" Multiplicity="*" />
           <End Role="Topping" Type="Self.Topping" Multiplicity="*" />
@@ -296,10 +275,6 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
         <Association Name="User_Card">
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <End Role="Card" Type="Self.Card" Multiplicity="*" />
-        </Association>
-        <Association Name="User_Sandwich">
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <End Role="Sandwich" Type="Self.Sandwich" Multiplicity="*" />
         </Association>
         <EntityContainer Name="sandwichswapContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Breads" EntityType="Self.Bread" />
@@ -311,6 +286,10 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
             <End Role="Bread" EntitySet="Breads" />
             <End Role="Sandwich" EntitySet="Sandwiches" />
           </AssociationSet>
+          <AssociationSet Name="fk_Username" Association="Self.fk_Username">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Sandwich" EntitySet="Sandwiches" />
+          </AssociationSet>
           <AssociationSet Name="Sandwich_Topping" Association="Self.Sandwich_Topping">
             <End Role="Sandwich" EntitySet="Sandwiches" />
             <End Role="Topping" EntitySet="Toppings" />
@@ -318,10 +297,6 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
           <AssociationSet Name="User_Card" Association="Self.User_Card">
             <End Role="User" EntitySet="Users" />
             <End Role="Card" EntitySet="Cards" />
-          </AssociationSet>
-          <AssociationSet Name="User_Sandwich" Association="Self.User_Sandwich">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Sandwich" EntitySet="Sandwiches" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -395,14 +370,6 @@ FROM `User_Sandwich` AS `User_Sandwich`</DefiningQuery>
             </EndProperty>
             <EndProperty Name="Card">
               <ScalarProperty Name="Id" ColumnName="CardId" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="User_Sandwich" TypeName="sandwichswapModel.User_Sandwich" StoreEntitySet="User_Sandwich">
-            <EndProperty Name="User">
-              <ScalarProperty Name="username" ColumnName="username" />
-            </EndProperty>
-            <EndProperty Name="Sandwich">
-              <ScalarProperty Name="Id" ColumnName="SandwichId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

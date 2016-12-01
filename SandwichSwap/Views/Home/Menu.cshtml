@@ -1,7 +1,7 @@
 ﻿@using SandwichSwap.ViewModels
 @model MenuViewModel
 
-@{ 
+@{
     Bread sandwichBread = new Bread();
     var sandwichToppings = new List<Topping>();
 }
@@ -13,19 +13,38 @@
     <script src="~/scripts/jquery.unobtrusive-ajax.js"></script>
     <script>
         $(document).ready(function () {
-
+            var numOfRows = 3;
             $("#addRow").click(function () {
-                $("#dropDown").clone().appendTo("#toppingTable");
+
+                if (numOfRows <= @Model.Toppings.Count +5) {
+                    $("#dropDown").clone().appendTo("#toppingTable");
+                    numOfRows++;
+                }
+                else {
+                    alert("You have too many toppings!")
+                }
+
             });
 
             $("#saveSandwich").click(function () {
+                var toppings = [];
+                $(".toppingList").each(function () {
+                    var toppingId = $(this).val();
+                    toppings.push(toppingId);
+                });
+
+
+                var myData = { breadId: $("#breadDropDown").val(), toppingIds: toppings };
+
+
                 $.ajax({
                     url: '/Home/SaveSandwich',
-                    data: {breadId: 1},
+                    data: myData,
+                    traditional: true,
                     success: function () {
                         alert("Your sandwich has been saved!")
                     },
-                    error: function() {
+                    error: function () {
                         alert("Something went wrong.")
                     }
                 });
@@ -43,10 +62,10 @@
 
 <div id="hiddenForm" style="visibility: hidden">
     <div id="dropDown">
-        <select>
+        <select class="toppingList">
             @foreach (Topping t in Model.Toppings)
             {
-                <option>@t.name</option>}
+                <option value=@t.Id>@t.name</option>}
         </select>
 
     </div>
@@ -68,4 +87,7 @@
 
     <input type="submit" id="orderSubmit" value="Order Sandwich" />
 
+}
+@foreach(Sandwich s in Model.sandwiches){
+    @Html.Partial("_MenuDisplayPartialView", s)
 }
