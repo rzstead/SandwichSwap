@@ -17,7 +17,7 @@ namespace SandwichSwap
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Topping()
         {
-            this.Sandwiches = new HashSet<Sandwich>();
+            this.Sandwich_Topping = new HashSet<Sandwich_Topping>();
         }
     
         public int Id { get; set; }
@@ -27,6 +27,6 @@ namespace SandwichSwap
         public int category { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sandwich> Sandwiches { get; set; }
+        public virtual ICollection<Sandwich_Topping> Sandwich_Topping { get; set; }
     }
 }

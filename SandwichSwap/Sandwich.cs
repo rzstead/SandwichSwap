@@ -17,7 +17,7 @@ namespace SandwichSwap
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sandwich()
         {
-            this.Toppings = new HashSet<Topping>();
+            this.Sandwich_Topping = new HashSet<Sandwich_Topping>();
         }
     
         public int Id { get; set; }
@@ -29,6 +29,6 @@ namespace SandwichSwap
         public virtual Bread Bread { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Topping> Toppings { get; set; }
+        public virtual ICollection<Sandwich_Topping> Sandwich_Topping { get; set; }
     }
 }
