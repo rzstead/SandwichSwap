@@ -9,6 +9,7 @@ namespace SandwichSwap.Controllers
 {
     public class HomeController : Controller
     {
+        public static User LoginUser=null;
 		private static int numOfRows = 3;
 		// GET: Home
 		public ActionResult Index()
@@ -19,7 +20,36 @@ namespace SandwichSwap.Controllers
         {
             return View();
         }
-		
+        [HttpPost]
+        public ActionResult Login(LoginViewModel viewm)
+        {
+            bool valid = false;
+            using (sandwichswapContext con = new sandwichswapContext())
+            {
+                foreach(User u in con.Users)
+                {
+                    if (u.username == viewm.Username)
+                    {
+                        if (u.password == viewm.Password)
+                        {
+                            valid = true;
+                            LoginUser = u;
+                        }
+                    }
+                }
+            }
+            ActionResult r=null;
+            if (valid)
+            {
+                r = View("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("Password","Invald Password");               
+                r = View();
+            }
+            return r;
+        }
         public ActionResult Register()
         {
             return View();
@@ -98,7 +128,7 @@ namespace SandwichSwap.Controllers
                     s.Sandwich_Topping.Add(newtopping);
                 }
 
-				s.User = con.Users.Where(x => x.username.Equals("rstead")).Single();
+				s.User = con.Users.Where(x => x.username.Equals(LoginUser)).Single();
 				s.sandwichname = sandwichName;
 				s.votes = 0;
 				con.Sandwiches.Add(s);
