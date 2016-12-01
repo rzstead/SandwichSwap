@@ -192,6 +192,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>sandwichswapDBModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Sandwich_Topping.cs">
+      <DependentUpon>sandwichswapDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Topping.cs">
       <DependentUpon>sandwichswapDBModel.tt</DependentUpon>
     </Compile>
