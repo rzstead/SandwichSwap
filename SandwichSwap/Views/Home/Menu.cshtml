@@ -1,7 +1,7 @@
 ﻿@using SandwichSwap.ViewModels
 @model MenuViewModel
 
-@{ 
+@{
     Bread sandwichBread = new Bread();
     var sandwichToppings = new List<Topping>();
 }
@@ -15,17 +15,15 @@
         $(document).ready(function () {
             var numOfRows = 3;
             $("#addRow").click(function () {
-                
-                if (numOfRows <= @Model.Toppings.Count + 5)
-                {
+
+                if (numOfRows <= @Model.Toppings.Count +5) {
                     $("#dropDown").clone().appendTo("#toppingTable");
                     numOfRows++;
                 }
-                else
-                {
+                else {
                     alert("You have too many toppings!")
                 }
-                
+
             });
 
             $("#saveSandwich").click(function () {
@@ -34,10 +32,10 @@
                     var toppingId = $(this).val();
                     toppings.push(toppingId);
                 });
-                
-                
+
+
                 var myData = { breadId: $("#breadDropDown").val(), toppingIds: toppings };
-                
+
 
                 $.ajax({
                     url: '/Home/SaveSandwich',
@@ -46,7 +44,7 @@
                     success: function () {
                         alert("Your sandwich has been saved!")
                     },
-                    error: function() {
+                    error: function () {
                         alert("Something went wrong.")
                     }
                 });
@@ -89,4 +87,7 @@
 
     <input type="submit" id="orderSubmit" value="Order Sandwich" />
 
+}
+@foreach(Sandwich s in Model.sandwiches){
+    @Html.Partial("_MenuDisplayPartialView", s)
 }
