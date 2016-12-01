@@ -11,13 +11,15 @@ namespace SandwichSwap.ViewModels
 		public string sandwichname { get; set; }
 		public List<Sandwich_Topping> Toppings { get; set; }
 		public Bread Bread { get; set; }
+		public int Votes { get; set; }
 
-		public PartialMenuViewModel(string username, string sandwichname, List<Sandwich_Topping> toppings, Bread b)
+		public PartialMenuViewModel(string username, string sandwichname, List<Sandwich_Topping> toppings, Bread b, int votes)
 		{
 			this.username = username;
 			this.sandwichname = sandwichname;
 			this.Toppings = toppings;
 			Bread = b;
+			Votes = votes;
 		}
 	}
 }

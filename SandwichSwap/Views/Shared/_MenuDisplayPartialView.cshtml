@@ -5,20 +5,20 @@
 }
 <div class="sandwichPart">
     
-    <div id="MenuName">
+    <div id="MenuName", class="navlink">
         @Model.sandwichname
     </div>
     <div id="MenuUser">
         <strong>Created by:</strong> @Model.username
     </div>
     <div id="MenuDescript">
-        <strong>Bread:</strong><br />
-        @Model.Bread.name<br />
+        <strong>Bread:</strong> @Model.Bread.name<br />
         <strong>Ingredients:</strong><br />
         
         @foreach(Sandwich_Topping st in Model.Toppings)
         {
             @st.Topping.ToString()<br />
         }
+        <strong>Votes: </strong>@Model.Votes
     </div>
 </div>

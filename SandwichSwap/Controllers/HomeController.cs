@@ -51,7 +51,7 @@ namespace SandwichSwap.Controllers
 				sandwiches = con.Sandwiches.ToList();
 				foreach(Sandwich s in sandwiches)
 				{
-					pms.Add(new PartialMenuViewModel(s.username, s.sandwichname, s.Sandwich_Topping.ToList(), s.Bread));
+					pms.Add(new PartialMenuViewModel(s.username, s.sandwichname, s.Sandwich_Topping.ToList(), s.Bread, s.votes));
 				}
 			}
 			return View(new MenuViewModel(breads, toppings, sandwiches, pms));
@@ -83,7 +83,7 @@ namespace SandwichSwap.Controllers
 			return PartialView("_ToppingTablePartialView", model);
 		}
 
-		public void SaveSandwich(int breadId, int[] toppingIds/*, string userName, string sandwichName*/)
+		public void SaveSandwich(int breadId, int[] toppingIds, string sandwichName/*, string userName*/)
 		{
 			
 			using (sandwichswapContext con = new sandwichswapContext())
@@ -99,7 +99,7 @@ namespace SandwichSwap.Controllers
                 }
 
 				s.User = con.Users.Where(x => x.username.Equals("rstead")).Single();
-				s.sandwichname = "DEFAULT NAME";
+				s.sandwichname = sandwichName;
 				s.votes = 0;
 				con.Sandwiches.Add(s);
 				con.SaveChanges();
