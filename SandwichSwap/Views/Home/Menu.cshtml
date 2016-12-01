@@ -83,11 +83,11 @@
 
     @Html.Partial("_ToppingTablePartialView", Model)
 
-    <input type="button" id="saveSandwich" value="Save Sandwich (Not Finished)" />
+    <input type="button" id="saveSandwich" value="Save Sandwich" />
 
     <input type="submit" id="orderSubmit" value="Order Sandwich" />
 
 }
-@*@foreach(Sandwich s in Model.sandwiches){
+@foreach(PartialMenuViewModel s in Model.PMViewModel){
     @Html.Partial("_MenuDisplayPartialView", s)
-}*@
+}

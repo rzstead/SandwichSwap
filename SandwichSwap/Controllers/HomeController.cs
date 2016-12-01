@@ -42,12 +42,19 @@ namespace SandwichSwap.Controllers
         {
 			List<Bread> breads = new List<Bread>();
 			List<Topping> toppings = new List<Topping>();
+			List<Sandwich> sandwiches = new List<Sandwich>();
+			List<PartialMenuViewModel> pms = new List<PartialMenuViewModel>();
 			using (sandwichswapContext con = new sandwichswapContext())
 			{
 				breads = con.Breads.ToList();
 				toppings = con.Toppings.ToList();
+				sandwiches = con.Sandwiches.ToList();
+				foreach(Sandwich s in sandwiches)
+				{
+					pms.Add(new PartialMenuViewModel(s.username, s.sandwichname, s.Sandwich_Topping.ToList(), s.Bread));
+				}
 			}
-			return View(new MenuViewModel(breads, toppings));
+			return View(new MenuViewModel(breads, toppings, sandwiches, pms));
 		}
         public ActionResult Order()
         {
@@ -82,21 +89,16 @@ namespace SandwichSwap.Controllers
 			using (sandwichswapContext con = new sandwichswapContext())
 			{
 				Sandwich s = new Sandwich();
-				//s.Id = 1;
-				//s.BreadId = breadId;
 				s.Bread = con.Breads.Where(x => x.Id == breadId).Single();
-				//s.Toppings = con.Toppings.Where(x => toppingIds.Contains(x.Id)).ToList();
-                foreach(int topid in toppingIds)
+                for(int i = 1; i < toppingIds.Count(); i++)
                 {
-                    //Topping topping = con.Toppings.Where(x => x.Id == topid).Single();
                     Sandwich_Topping newtopping = new Sandwich_Topping();
                     newtopping.Sandwich = s;
-                    newtopping.ToppingId = topid;
+                    newtopping.ToppingId = toppingIds[i];
                     s.Sandwich_Topping.Add(newtopping);
                 }
 
 				s.User = con.Users.Where(x => x.username.Equals("rstead")).Single();
-				//s.username = "rstead";
 				s.sandwichname = "DEFAULT NAME";
 				s.votes = 0;
 				con.Sandwiches.Add(s);

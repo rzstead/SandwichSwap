@@ -207,6 +207,7 @@
     <Compile Include="Models\Topping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MenuViewModel.cs" />
+    <Compile Include="ViewModels\PartialMenuViewModel.cs" />
     <Compile Include="Views\Home\UserProfViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
