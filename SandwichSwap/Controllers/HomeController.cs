@@ -128,7 +128,7 @@ namespace SandwichSwap.Controllers
                     s.Sandwich_Topping.Add(newtopping);
                 }
 
-				s.User = con.Users.Where(x => x.username.Equals("rstead")).Single();
+				s.User = con.Users.Where(x => x.username.Equals(LoginUser)).Single();
 				s.sandwichname = "DEFAULT NAME";
 				s.votes = 0;
 				con.Sandwiches.Add(s);
