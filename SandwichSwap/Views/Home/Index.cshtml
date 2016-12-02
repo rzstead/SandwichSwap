@@ -14,6 +14,14 @@
 <h1>
     Sandwich Swap, the social sandwich site!
 </h1>
+@if (Model.user != null)
+{
+    <h3>Hello, @Model.user.username!</h3>
+}
+else
+{
+    <h3>Hello, Guest!</h3>
+}
 <p>
     Welcome to the customize your own sandwich and follow those with similar sandwich ideas. It is the instagram of sandwiches show what the sandwich is and allow others to follow the design and use it on there own favorite menu if they like it. Let your sandwich imagination expand with having more and more with sandwich fillers.
 </p>

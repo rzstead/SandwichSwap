@@ -14,7 +14,9 @@ namespace SandwichSwap.Controllers
 		// GET: Home
 		public ActionResult Index()
         {
-            return View();
+			IndexViewModel vm = new IndexViewModel();
+			vm.user = LoginUser;
+            return View(vm);
         }
         public ActionResult Login()
         {
@@ -41,7 +43,7 @@ namespace SandwichSwap.Controllers
             ActionResult r=null;
             if (valid)
             {
-                r = View("Index");
+				r = new RedirectResult("Index");
             }
             else
             {
@@ -84,7 +86,7 @@ namespace SandwichSwap.Controllers
 					pms.Add(new PartialMenuViewModel(s.username, s.sandwichname, s.Sandwich_Topping.ToList(), s.Bread, s.votes));
 				}
 			}
-			return View(new MenuViewModel(breads, toppings, sandwiches, pms));
+			return View(new MenuViewModel(breads, toppings, sandwiches, pms, LoginUser));
 		}
         public ActionResult Order()
         {
@@ -128,7 +130,7 @@ namespace SandwichSwap.Controllers
                     s.Sandwich_Topping.Add(newtopping);
                 }
 
-				s.User = con.Users.Where(x => x.username.Equals(LoginUser)).Single();
+				s.User = con.Users.Where(x => x.username.Equals(LoginUser.username)).Single();
 				s.sandwichname = sandwichName;
 				s.votes = 0;
 				con.Sandwiches.Add(s);
