@@ -5,7 +5,7 @@
 }
 @font-face{
     font-family: Porcelina;
-    src: url(/Fonts/Porcelina.otf)
+    src: url(/sandwichswap/Fonts/Porcelina.otf)
 }
 .welcome{
     text-align:center;
@@ -21,7 +21,7 @@
     margin: 15px;
 }
 header{
-    background-image:url(/Images/Front/eggwich.jpg);
+    background-image:url(/sandwichswap/Images/Front/eggwich.jpg);
     background-repeat:no-repeat;
     background-size: cover;
     background-position:top 35% right;
