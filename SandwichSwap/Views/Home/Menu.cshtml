@@ -88,7 +88,12 @@
 
     @Html.Partial("_ToppingTablePartialView", Model)
 
-    <input type="button" id="saveSandwich" value="Save Sandwich" />
+    <!-- WRAP THIS IN AN IF BASED ON USER-->
+    if (Model.User != null)
+    {
+        <input type="button" id="saveSandwich" value="Save Sandwich" />
+    }
+
 
     <input type="submit" id="orderSubmit" value="Order Sandwich" />
 

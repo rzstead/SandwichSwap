@@ -8,14 +8,15 @@ namespace SandwichSwap.ViewModels
     public class MenuViewModel
     {
 
-        private User _sandwichUser;
+		public User User { get; set; }
 
 		public List<Sandwich> Sandwiches { get; set; }
 
 		public List<PartialMenuViewModel> PMViewModel { get; set; }
 
-		public MenuViewModel(List<Bread> breads, List<Topping> toppings, List<Sandwich> sandwiches, List<PartialMenuViewModel> pm)
+		public MenuViewModel(List<Bread> breads, List<Topping> toppings, List<Sandwich> sandwiches, List<PartialMenuViewModel> pm, User user)
         {
+			User = user;
             Breads = breads;
             Toppings = toppings;
 			Sandwiches = sandwiches;
