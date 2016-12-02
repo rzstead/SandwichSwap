@@ -1,20 +1,24 @@
-﻿@model Sandwich
+﻿@using SandwichSwap.ViewModels
+@model PartialMenuViewModel
 @{
     Layout = null;
 }
 <div class="sandwichPart">
     
-    <div id="MenuName">
+    <div id="MenuName", class="navlink">
         @Model.sandwichname
     </div>
     <div id="MenuUser">
         <strong>Created by:</strong> @Model.username
     </div>
     <div id="MenuDescript">
-        <strong>Toppings:</strong>
-        @foreach (Topping t in Model.Toppings)
+        <strong>Bread:</strong> @Model.Bread.name<br />
+        <strong>Ingredients:</strong><br />
+        
+        @foreach(Sandwich_Topping st in Model.Toppings)
         {
-            @t.ToString()<br />
+            @st.Topping.ToString()<br />
         }
+        <strong>Votes: </strong>@Model.Votes
     </div>
 </div>

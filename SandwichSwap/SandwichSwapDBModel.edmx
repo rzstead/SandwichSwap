@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="sandwichswapModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="sandwichswapModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bread">
           <Key>
             <PropertyRef Name="Id" />
@@ -34,13 +34,11 @@
           <Property Name="BreadId" Type="int" Nullable="false" />
           <Property Name="votes" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'def.sandwichswap.Sandwich_Topping' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Sandwich_Topping">
           <Key>
-            <PropertyRef Name="SandwichId" />
-            <PropertyRef Name="ToppingId" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SandwichId" Type="int" Nullable="false" />
           <Property Name="ToppingId" Type="int" Nullable="false" />
         </EntityType>
@@ -83,6 +81,18 @@ warning 6002: The table/view 'def.sandwichswap.User_Card' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Sandwich1">
+          <End Role="Sandwich" Type="Self.Sandwich" Multiplicity="1" />
+          <End Role="Sandwich_Topping" Type="Self.Sandwich_Topping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sandwich">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sandwich_Topping">
+              <PropertyRef Name="SandwichId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Sandwich_ibfk_1">
           <End Role="Bread" Type="Self.Bread" Multiplicity="1" />
           <End Role="Sandwich" Type="Self.Sandwich" Multiplicity="*" />
@@ -95,19 +105,7 @@ warning 6002: The table/view 'def.sandwichswap.User_Card' does not have a primar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Sandwich_Topping_ibfk_1">
-          <End Role="Sandwich" Type="Self.Sandwich" Multiplicity="1" />
-          <End Role="Sandwich_Topping" Type="Self.Sandwich_Topping" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sandwich">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Sandwich_Topping">
-              <PropertyRef Name="SandwichId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Sandwich_Topping_ibfk_2">
+        <Association Name="Topping1">
           <End Role="Topping" Type="Self.Topping" Multiplicity="1" />
           <End Role="Sandwich_Topping" Type="Self.Sandwich_Topping" Multiplicity="*" />
           <ReferentialConstraint>
@@ -147,14 +145,9 @@ warning 6002: The table/view 'def.sandwichswap.User_Card' does not have a primar
           <EntitySet Name="Bread" EntityType="Self.Bread" Schema="sandwichswap" store:Type="Tables" />
           <EntitySet Name="Card" EntityType="Self.Card" Schema="sandwichswap" store:Type="Tables" />
           <EntitySet Name="Sandwich" EntityType="Self.Sandwich" Schema="sandwichswap" store:Type="Tables" />
+          <EntitySet Name="Sandwich_Topping" EntityType="Self.Sandwich_Topping" Schema="sandwichswap" store:Type="Tables" />
           <EntitySet Name="Topping" EntityType="Self.Topping" Schema="sandwichswap" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="sandwichswap" store:Type="Tables" />
-          <EntitySet Name="Sandwich_Topping" EntityType="Self.Sandwich_Topping" store:Type="Tables" store:Schema="sandwichswap">
-            <DefiningQuery>SELECT
-`Sandwich_Topping`.`SandwichId`, 
-`Sandwich_Topping`.`ToppingId`
-FROM `Sandwich_Topping` AS `Sandwich_Topping`</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="User_Card" EntityType="Self.User_Card" store:Type="Tables" store:Schema="sandwichswap">
             <DefiningQuery>SELECT
 `User_Card`.`username`, 
@@ -165,15 +158,15 @@ FROM `User_Card` AS `User_Card`</DefiningQuery>
             <End Role="User" EntitySet="User" />
             <End Role="Sandwich" EntitySet="Sandwich" />
           </AssociationSet>
+          <AssociationSet Name="Sandwich1" Association="Self.Sandwich1">
+            <End Role="Sandwich" EntitySet="Sandwich" />
+            <End Role="Sandwich_Topping" EntitySet="Sandwich_Topping" />
+          </AssociationSet>
           <AssociationSet Name="Sandwich_ibfk_1" Association="Self.Sandwich_ibfk_1">
             <End Role="Bread" EntitySet="Bread" />
             <End Role="Sandwich" EntitySet="Sandwich" />
           </AssociationSet>
-          <AssociationSet Name="Sandwich_Topping_ibfk_1" Association="Self.Sandwich_Topping_ibfk_1">
-            <End Role="Sandwich" EntitySet="Sandwich" />
-            <End Role="Sandwich_Topping" EntitySet="Sandwich_Topping" />
-          </AssociationSet>
-          <AssociationSet Name="Sandwich_Topping_ibfk_2" Association="Self.Sandwich_Topping_ibfk_2">
+          <AssociationSet Name="Topping1" Association="Self.Topping1">
             <End Role="Topping" EntitySet="Topping" />
             <End Role="Sandwich_Topping" EntitySet="Sandwich_Topping" />
           </AssociationSet>
@@ -186,7 +179,8 @@ FROM `User_Card` AS `User_Card`</DefiningQuery>
             <End Role="User_Card" EntitySet="User_Card" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sandwichswapModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -222,7 +216,17 @@ FROM `User_Card` AS `User_Card`</DefiningQuery>
           <Property Name="votes" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Bread" Relationship="Self.Sandwich_ibfk_1" FromRole="Sandwich" ToRole="Bread" />
           <NavigationProperty Name="User" Relationship="Self.fk_Username" FromRole="Sandwich" ToRole="User" />
-          <NavigationProperty Name="Toppings" Relationship="Self.Sandwich_Topping" FromRole="Sandwich" ToRole="Topping" />
+          <NavigationProperty Name="Sandwich_Topping" Relationship="Self.Sandwich1" FromRole="Sandwich" ToRole="Sandwich_Topping" />
+        </EntityType>
+        <EntityType Name="Sandwich_Topping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SandwichId" Type="Int32" Nullable="false" />
+          <Property Name="ToppingId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sandwich" Relationship="Self.Sandwich1" FromRole="Sandwich_Topping" ToRole="Sandwich" />
+          <NavigationProperty Name="Topping" Relationship="Self.Topping1" FromRole="Sandwich_Topping" ToRole="Topping" />
         </EntityType>
         <EntityType Name="Topping">
           <Key>
@@ -233,7 +237,7 @@ FROM `User_Card` AS `User_Card`</DefiningQuery>
           <Property Name="imageURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="category" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Sandwiches" Relationship="Self.Sandwich_Topping" FromRole="Topping" ToRole="Sandwich" />
+          <NavigationProperty Name="Sandwich_Topping" Relationship="Self.Topping1" FromRole="Topping" ToRole="Sandwich_Topping" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -268,9 +272,29 @@ FROM `User_Card` AS `User_Card`</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Sandwich_Topping">
-          <End Role="Sandwich" Type="Self.Sandwich" Multiplicity="*" />
-          <End Role="Topping" Type="Self.Topping" Multiplicity="*" />
+        <Association Name="Sandwich1">
+          <End Role="Sandwich" Type="Self.Sandwich" Multiplicity="1" />
+          <End Role="Sandwich_Topping" Type="Self.Sandwich_Topping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sandwich">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sandwich_Topping">
+              <PropertyRef Name="SandwichId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Topping1">
+          <End Role="Topping" Type="Self.Topping" Multiplicity="1" />
+          <End Role="Sandwich_Topping" Type="Self.Sandwich_Topping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topping">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sandwich_Topping">
+              <PropertyRef Name="ToppingId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="User_Card">
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -280,6 +304,7 @@ FROM `User_Card` AS `User_Card`</DefiningQuery>
           <EntitySet Name="Breads" EntityType="Self.Bread" />
           <EntitySet Name="Cards" EntityType="Self.Card" />
           <EntitySet Name="Sandwiches" EntityType="Self.Sandwich" />
+          <EntitySet Name="Sandwich_Topping" EntityType="Self.Sandwich_Topping" />
           <EntitySet Name="Toppings" EntityType="Self.Topping" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="Sandwich_ibfk_1" Association="Self.Sandwich_ibfk_1">
@@ -290,9 +315,13 @@ FROM `User_Card` AS `User_Card`</DefiningQuery>
             <End Role="User" EntitySet="Users" />
             <End Role="Sandwich" EntitySet="Sandwiches" />
           </AssociationSet>
-          <AssociationSet Name="Sandwich_Topping" Association="Self.Sandwich_Topping">
+          <AssociationSet Name="Sandwich1" Association="Self.Sandwich1">
             <End Role="Sandwich" EntitySet="Sandwiches" />
+            <End Role="Sandwich_Topping" EntitySet="Sandwich_Topping" />
+          </AssociationSet>
+          <AssociationSet Name="Topping1" Association="Self.Topping1">
             <End Role="Topping" EntitySet="Toppings" />
+            <End Role="Sandwich_Topping" EntitySet="Sandwich_Topping" />
           </AssociationSet>
           <AssociationSet Name="User_Card" Association="Self.User_Card">
             <End Role="User" EntitySet="Users" />
@@ -337,6 +366,15 @@ FROM `User_Card` AS `User_Card`</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Sandwich_Topping">
+            <EntityTypeMapping TypeName="sandwichswapModel.Sandwich_Topping">
+              <MappingFragment StoreEntitySet="Sandwich_Topping">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SandwichId" ColumnName="SandwichId" />
+                <ScalarProperty Name="ToppingId" ColumnName="ToppingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Toppings">
             <EntityTypeMapping TypeName="sandwichswapModel.Topping">
               <MappingFragment StoreEntitySet="Topping">
@@ -356,14 +394,6 @@ FROM `User_Card` AS `User_Card`</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="Sandwich_Topping" TypeName="sandwichswapModel.Sandwich_Topping" StoreEntitySet="Sandwich_Topping">
-            <EndProperty Name="Sandwich">
-              <ScalarProperty Name="Id" ColumnName="SandwichId" />
-            </EndProperty>
-            <EndProperty Name="Topping">
-              <ScalarProperty Name="Id" ColumnName="ToppingId" />
-            </EndProperty>
-          </AssociationSetMapping>
           <AssociationSetMapping Name="User_Card" TypeName="sandwichswapModel.User_Card" StoreEntitySet="User_Card">
             <EndProperty Name="User">
               <ScalarProperty Name="username" ColumnName="username" />

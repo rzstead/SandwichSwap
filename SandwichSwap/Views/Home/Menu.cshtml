@@ -34,7 +34,7 @@
                 });
 
 
-                var myData = { breadId: $("#breadDropDown").val(), toppingIds: toppings };
+                var myData = { breadId: $("#breadDropDown").val(), toppingIds: toppings, sandwichName: $("#sandwichName").val() };
 
 
                 $.ajax({
@@ -73,21 +73,26 @@
 
 @using (Html.BeginForm("Order", "Home"))
 {
+    <strong>Name: </strong><input type="text" id="sandwichName" value="Enter a sandwich name" /><br />
+
+    <strong>Bread: </strong>
     <select id="breadDropDown">
         @foreach (Bread t in Model.Breads)
         {
             @:Bread Type:
             <option value="@t.Id">@t.name</option>
         }
-    </select>
+    </select><br />
+
+    <strong>Toppings: </strong><br />
 
     @Html.Partial("_ToppingTablePartialView", Model)
 
-    <input type="button" id="saveSandwich" value="Save Sandwich (Not Finished)" />
+    <input type="button" id="saveSandwich" value="Save Sandwich" />
 
     <input type="submit" id="orderSubmit" value="Order Sandwich" />
 
 }
-@foreach(Sandwich s in Model.sandwiches){
+@foreach(PartialMenuViewModel s in Model.PMViewModel){
     @Html.Partial("_MenuDisplayPartialView", s)
 }
